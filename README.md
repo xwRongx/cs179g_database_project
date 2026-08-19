@@ -1,4 +1,4 @@
-# cs179g_database_project
+# CS179G Database Project (Group 3)
 Description: Database project using google n-grams dataset to analyze word trends.
 
 ## Useful Terminal Commands
