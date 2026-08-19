@@ -36,7 +36,7 @@ PySpark:\
 + `python src/process_top_word_year.py`
     + Sorts 'clean_ngram.csv' and writes "Top Word per Year"
 
-**3. Print Top 10 Words by the Decade (1580-2000)**
+**3. Print Data**
 + Enter MySQL:
     + `$(brew --prefix mysql@8.4)/bin/mysql -u root`
 + Use ngram database:
