@@ -8,7 +8,8 @@ Install requirements.txt:\
 `python -m pip install -r requirements.txt`
 
 Access MySQL:\
-`$(brew --prefix mysql@8.4)/bin/mysql -u root`\
+`$(brew --prefix mysql@8.4)/bin/mysql -u root`
+
 Run Schema in MySQL:\
 `$(brew --prefix mysql@8.4)/bin/mysql -u root < sql/schema.sql`
 
@@ -24,15 +25,19 @@ PySpark:\
 `python src/tests/test3_mysql.py`\
 `python src/process_ngrams.py`
 
-## Part 2: Store Top 10 Words (By Decade) to MySQL Database
+## Part 2: Store Top 10 Words (By Decade) to MySQL Database and Print
 1. Load 'clean_ngram.csv' into 'data' folder.
 
 2. Load schema onto local MySQL database.
-+ `$(brew --prefix mysql@8.4)/bin/mysql -u root < sql/schema.sql` (Mac-based, change according to device)\
++ `$(brew --prefix mysql@8.4)/bin/mysql -u root < sql/schema.sql` 
+    + Mac-based, change according to device
 + `python src/process_decade_top.py`
+    + Sorts 'clean_ngram.csv' and writes intended data to database
 
-3. Print Top 10 Words by the Decade
+3. Print Top 10 Words by the Decade (1580-2000)
 + `$(brew --prefix mysql@8.4)/bin/mysql -u root` (Enter MySQL)
 + `USE ngram_db;`
 + `SELECT COUNT(*) FROM decade_top_words;`
 + `SELECT * FROM decade_top_words ORDER BY decade, word_rank LIMIT 500;`
+
+Note: 'process_ngrams.py' writes word stats and top words by decade. For simplicity, only 'process_decade_top.py' is used for Part 2.
