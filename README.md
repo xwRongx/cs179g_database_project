@@ -2,6 +2,11 @@
 Database project using google n-grams dataset to analyze word trends.
 
 ### Useful Terminal Commands
+
+Install requirements.txt:
+`cd cs179g_database_project`
+`python -m pip install -r requirements.txt`
+
 Access MySQL:
 `$(brew --prefix mysql@8.4)/bin/mysql -u root`
 Run Schema in MySQL:
