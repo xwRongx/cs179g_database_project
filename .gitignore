@@ -5,3 +5,4 @@ __pycache__/
 .env
 preprocessing/
 data/clean_ngram.csv
+src/process_word_trend.py

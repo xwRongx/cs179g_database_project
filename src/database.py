@@ -15,11 +15,29 @@ def write_word_year_stats(df):
         properties=MYSQL_PROPERTIES
     )
 
-# Writes the Spark DataFrame containing the top words for each decade into the decade_top_words MySQL table.
+# Writes the Spark DataFrame containing the top words for each decade into decade_top_words MySQL table.
 def write_decade_top_words(df):
     df.write.jdbc(
         url=MYSQL_URL,
         table="decade_top_words",
+        mode="overwrite",
+        properties=MYSQL_PROPERTIES
+    )
+
+# Writes the Spark DataFrame containing the top word per year into top_word_year MySQL table.
+def write_top_word_year(df):
+    df.write.jdbc(
+        url=MYSQL_URL,
+        table="top_word_year",
+        mode="overwrite",
+        properties=MYSQL_PROPERTIES
+    )
+
+# Writes the Spark DataFrame containing a specified word and its trends per year into word_trend MySQL table.
+def write_word_trend(df):
+    df.write.jdbc(
+        url=MYSQL_URL,
+        table="word_trend",
         mode="overwrite",
         properties=MYSQL_PROPERTIES
     )

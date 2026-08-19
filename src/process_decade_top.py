@@ -77,7 +77,10 @@ ranked_df = (
 decade_top_words_df = (
     ranked_df
     .filter(F.col("word_rank") <= 10)
-    .orderBy("decade", "word_rank")
+    .orderBy(
+        F.desc("decade"),
+        F.asc("word_rank")
+    )
 )
 
 
