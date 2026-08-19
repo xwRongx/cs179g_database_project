@@ -46,4 +46,4 @@ PySpark:\
 + Print Top Word per Year:
     + `SELECT * FROM top_word_year ORDER BY year DESC LIMIT 20;`
 
-Note: 'process_ngrams.py' writes word stats and top words by decade. For simplicity, only 'process_decade_top.py' is used for Part 2.
+Note: 'process_ngrams.py' writes word stats and top words by decade. For simplicity, only 'process_decade_top.py' and 'process_top_word_year.py' is used for Part 2.
