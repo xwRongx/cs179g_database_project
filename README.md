@@ -24,7 +24,7 @@ PySpark:\
 `python src/tests/test3_mysql.py`\
 `python src/process_ngrams.py`
 
-## Part 2:
+## Part 2: Store Top 10 Words (By Decade) to MySQL Database
 1. Load 'clean_ngram.csv' into 'data' folder.
 
 2. Load schema onto local MySQL database.
