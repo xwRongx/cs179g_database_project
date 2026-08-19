@@ -13,7 +13,7 @@ from pyspark.sql import SparkSession
 spark = SparkSession.builder.appName("CleanData").getOrCreate()
 
 # Read in and show initial data/dimensions
-df = spark.read.csv("ngram.csv", sep ="\t", header=False, inferSchema=True)
+df = spark.read.csv("ngrams1.csv", sep ="\t", header=False, inferSchema=True)
 df.show(10)
 print("Number of rows:", df.count())
 
@@ -45,3 +45,30 @@ import pyspark.sql.functions as sf
 df = df.filter(sf.rlike('word', sf.lit(r"^[A-Za-z']+$")))
 df.show()
 print("Number of rows:", df.count())
+
+# get most popular word of each year
+# how to improve: get most popular word that's not a conjunction/ pronoun/ etc
+
+a = df.alias("a")
+b = df.alias("b")
+df2 = b.groupBy(b.year).agg(sf.max(b.match_count).alias("highestCount"))
+(
+    a
+      .join(df2, [a.year == df2.year, a.match_count == df2.highestCount])
+      .select(a.year, df2.highestCount, a.word)
+      .sort(sf.desc(df.year))
+      .show()
+)
+
+
+# get published instances of word per year for a specified word
+
+trend = df.alias("trend")
+
+matchWord = "DATABASE"
+trend.select(trend.word, trend.year, trend.match_count).filter(trend.word == matchWord).sort(trend.year).show()
+
+# make trend graph for word
+import matplotlib.pyplot as plt
+trend.plot(x="year",y="match_count")
+
