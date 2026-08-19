@@ -3,3 +3,5 @@ __pycache__/
 *.pyc
 .DS_Store
 .env
+preprocessing/ngram.csv
+preprocessing/clean_ngram.csv
