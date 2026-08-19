@@ -2,16 +2,13 @@ from pyspark.sql import SparkSession
 from pyspark.sql import functions as F
 from pyspark.sql.window import Window
 
-from database import (
-    write_word_year_stats,
-    write_decade_top_words
-)
+from database import write_decade_top_words
 
 
 # Start Spark
 spark = (
     SparkSession.builder
-    .appName("Google Books Ngram Processing")
+    .appName("Top Words by Decade")
     .master("local[2]")
     .config(
         "spark.jars.packages",
@@ -31,54 +28,26 @@ df = (
     .csv("data/clean_ngram.csv")
 )
 
-print("Original cleaned data:")
-df.show(10)
 
-print("Schema:")
-df.printSchema()
-
-
-# Additional validation / cleaning
+# Basic validation
 clean_df = (
     df
-    .dropna(
-        subset=[
-            "word",
-            "year",
-            "match_count",
-            "page_count",
-            "volume_count"
-        ]
-    )
+    .dropna(subset=["word", "year", "match_count"])
     .filter(F.col("word") != "")
     .filter(F.col("year") > 0)
     .filter(F.col("match_count") >= 0)
-    .filter(F.col("page_count") >= 0)
-    .filter(F.col("volume_count") >= 0)
 )
 
 
-# Analysis #1: Word statistics by year
-word_year_stats_df = (
-    clean_df
-    .groupBy("word", "year")
-    .agg(
-        F.sum("match_count").alias("match_count"),
-        F.sum("page_count").alias("page_count"),
-        F.sum("volume_count").alias("volume_count")
-    )
-)
-
-print("Word statistics by year:")
-word_year_stats_df.show(20)
-
-
-# Analysis #2: Top 10 words by decade
+# Convert year into decade
+# Example: 1954 -> 1950
 with_decade_df = clean_df.withColumn(
     "decade",
     (F.floor(F.col("year") / 10) * 10).cast("int")
 )
 
+
+# Add total number of matches for each word within each decade
 decade_totals_df = (
     with_decade_df
     .groupBy("decade", "word")
@@ -87,33 +56,48 @@ decade_totals_df = (
     )
 )
 
+
+# Rank words separately within each decade
 ranking_window = (
     Window
     .partitionBy("decade")
     .orderBy(F.desc("total_matches"))
 )
 
-decade_top_words_df = (
+ranked_df = (
     decade_totals_df
     .withColumn(
         "word_rank",
         F.row_number().over(ranking_window)
     )
-    .filter(F.col("word_rank") <= 10)
 )
 
+
+# Keep only the top 10 words in each decade
+decade_top_words_df = (
+    ranked_df
+    .filter(F.col("word_rank") <= 10)
+    .orderBy("decade", "word_rank")
+)
+
+
+# Show results
 print("Top 10 words by decade:")
-decade_top_words_df.show(50)
+decade_top_words_df.show(500, truncate=False)
+
+print("Schema:")
+decade_top_words_df.printSchema()
+
+print("Number of rows:")
+print(decade_top_words_df.count())
 
 
-# Store Spark results in MySQL
-print("Writing word_year_stats to MySQL...")
-write_word_year_stats(word_year_stats_df)
-
+# Write results to MySQL
 print("Writing decade_top_words to MySQL...")
+
 write_decade_top_words(decade_top_words_df)
 
 print("Database write complete.")
 
-# End
+
 spark.stop()

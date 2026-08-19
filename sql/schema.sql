@@ -3,17 +3,18 @@ CREATE DATABASE IF NOT EXISTS ngram_db;
 USE ngram_db;
 
 CREATE TABLE IF NOT EXISTS word_year_stats (
-    ngram VARCHAR(255),
-    year INT,
-    match_count BIGINT,
-    page_count BIGINT,
-    volume_count BIGINT,
-    PRIMARY KEY (ngram, year)
+    word VARCHAR(255) NOT NULL,
+    year INT NOT NULL,
+    match_count BIGINT NOT NULL,
+    page_count BIGINT NOT NULL,
+    volume_count BIGINT NOT NULL,
+    PRIMARY KEY (word, year)
 );
 
 CREATE TABLE IF NOT EXISTS decade_top_words (
-    decade INT,
-    ngram VARCHAR(255),
-    total_matches BIGINT,
-    word_rank INT
+    decade INT NOT NULL,
+    word VARCHAR(255) NOT NULL,
+    total_matches BIGINT NOT NULL,
+    word_rank INT NOT NULL,
+    PRIMARY KEY (decade, word_rank)
 );

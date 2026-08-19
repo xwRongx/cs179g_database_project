@@ -1,5 +1,4 @@
 from pyspark.sql import SparkSession
-from database import MYSQL_URL, MYSQL_PROPERTIES
 
 spark = (
     SparkSession.builder
@@ -8,6 +7,10 @@ spark = (
     .config(
         "spark.jars.packages",
         "com.mysql:mysql-connector-j:8.4.0"
+    )
+    .config(
+        "spark.sql.legacy.charVarcharAsString",
+        "true"
     )
     .getOrCreate()
 )
@@ -19,14 +22,21 @@ data = [
 
 df = spark.createDataFrame(
     data,
-    ["ngram", "year", "match_count", "page_count", "volume_count"]
+    ["word", "year", "match_count", "page_count", "volume_count"]
 )
 
+df.printSchema()
+print(df.columns)
+
 df.write.jdbc(
-    url=MYSQL_URL,
+    url="jdbc:mysql://127.0.0.1:3306/ngram_db",
     table="word_year_stats",
-    mode="append",
-    properties=MYSQL_PROPERTIES
+    mode="overwrite",
+    properties={
+        "user": "root",
+        "password": "",
+        "driver": "com.mysql.cj.jdbc.Driver"
+    }
 )
 
 spark.stop()
