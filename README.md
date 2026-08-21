@@ -47,3 +47,33 @@ PySpark:\
     + `SELECT * FROM top_word_year ORDER BY year DESC LIMIT 20;`
 
 Note: 'process_ngrams.py' writes word stats and top words by decade. For simplicity, only 'process_decade_top.py' and 'process_top_word_year.py' is used for Part 2.
+
+## Website Backend (MySQL API)
+
+The Express backend reads the processed Part 2 results from MySQL and returns JSON for the frontend charts.
+
+The trend route reads from `word_year_stats`, which is filled by `src/process_ngrams.py`. The decade route reads from `decade_top_words`, which is filled by `src/process_decade_top.py` (or `src/process_ngrams.py`).
+
+### Setup
+
+1. Make sure MySQL is running and the tables in `sql/schema.sql` have been loaded.
+2. Open a terminal in the `backend` folder.
+3. Run `npm install`.
+4. If your MySQL settings are different, copy `backend/.env.example` to `backend/.env` and edit the values. The defaults use `root`, no password, and the `ngram_db` database.
+5. Run `npm start`. The API starts at `http://localhost:5000` so it does not conflict with React on port 3000.
+
+### API Routes
+
+- `GET /api/health` checks the MySQL connection.
+- `GET /api/trends?keyword=database` returns yearly counts for a keyword.
+- `GET /api/trends?keyword=database&startYear=1900&endYear=2009` optionally filters the chart years.
+- `GET /api/decades` returns the available decades for a dropdown.
+- `GET /api/top-words?decade=1990&limit=10` returns the most popular words for one decade.
+
+Example frontend request:
+
+```javascript
+fetch('http://localhost:5000/api/trends?keyword=database')
+  .then(response => response.json())
+  .then(result => console.log(result.data));
+```
