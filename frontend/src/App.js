@@ -9,7 +9,7 @@ function App() {
   // Fetch trend data for input keyword 
   useEffect(() => {
     async function fetchTrends(keyword) {
-      const response = await fetch(`http://localhost:5000/api/trends?keyword=${keyword}`);
+      const response = await fetch(`http://localhost:5001/api/trends?keyword=${keyword}`);
       const data = await response.json();
       console.log(`Fetched trend data for "${keyword}":`, data.data);
       setTrendData(data.data);
