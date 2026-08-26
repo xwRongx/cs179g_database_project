@@ -1,38 +1,278 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f6f8;
+  color: #1f2933;
 }
 
-.App-header {
-  background-color: #282c34;
+button,
+input,
+select {
+  font: inherit;
+}
+
+/* Landing page */
+
+.landing-page {
   min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: #f4f6f8;
+}
+
+.landing-card {
+  width: min(620px, 100%);
+  padding: 72px 48px;
+  text-align: center;
+  background: white;
+  border: 1px solid #d9e0e6;
+  border-radius: 18px;
+  box-shadow: 0 12px 35px rgba(31, 41, 51, 0.08);
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #66788a;
+}
+
+.landing-card h1,
+.page-header h1 {
+  margin: 0;
+}
+
+.landing-card h1 {
+  font-size: clamp(42px, 7vw, 68px);
+}
+
+.landing-description {
+  margin: 18px auto 32px;
+  max-width: 420px;
+  color: #66788a;
+  line-height: 1.6;
+}
+
+.primary-button {
+  border: 0;
+  border-radius: 9px;
+  padding: 11px 22px;
+  background: #1f2933;
+  color: white;
+  cursor: pointer;
+}
+
+.primary-button:hover {
+  background: #34495e;
+}
+
+/* Main page */
+
+.dashboard {
+  min-height: 100vh;
+}
+
+.page-header {
+  padding: 34px 6% 20px;
+  background: white;
+  border-bottom: 1px solid #dfe5ea;
+}
+
+.page-header h1 {
+  font-size: 34px;
+}
+
+.dashboard-content {
+  width: min(1280px, 88%);
+  margin: 32px auto 60px;
+}
+
+.toolbar-card,
+.graph-card,
+.filter-card {
+  background: white;
+  border: 1px solid #dfe5ea;
+  border-radius: 14px;
+}
+
+.toolbar-card {
+  padding: 22px;
+  margin-bottom: 24px;
+}
+
+.search-form {
+  max-width: 760px;
+}
+
+.search-form > label,
+.control-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.search-row {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 10px;
+}
+
+.search-row input {
+  flex: 1;
+  min-width: 0;
+  padding: 11px 14px;
+  border: 1px solid #bcc7d1;
+  border-radius: 9px;
+  outline: none;
+}
+
+.search-row input:focus {
+  border-color: #66788a;
+}
+
+.graph-switcher {
+  margin-top: 22px;
+}
+
+.tab {
+  margin-right: 8px;
+  margin-bottom: 8px;
+  padding: 9px 14px;
+  border: 1px solid #bcc7d1;
+  border-radius: 8px;
+  background: white;
+  color: #34495e;
+  cursor: pointer;
+}
+
+.tab.active {
+  border-color: #1f2933;
+  background: #1f2933;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* Graph area */
+
+.visualization-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 230px;
+  gap: 24px;
+  align-items: start;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.graph-card {
+  min-width: 0;
+  padding: 24px;
+}
+
+.graph-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 18px;
+}
+
+.section-label {
+  margin: 0 0 5px;
+  color: #778899;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.graph-card h2 {
+  margin: 0;
+  font-size: 23px;
+}
+
+.graph-component {
+  width: 100%;
+}
+
+/*
+  These two class names already exist inside TopYear.js and TopDecade.js,
+  so the UI can style those graph components without rewriting them.
+*/
+
+.dropdown {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.dropdown label {
+  font-weight: 600;
+}
+
+.dropdown select {
+  padding: 8px 12px;
+  border: 1px solid #bcc7d1;
+  border-radius: 7px;
+  background: white;
+}
+
+.chart {
+  position: relative;
+  width: 100%;
+  min-height: 430px;
+}
+
+/* Filter panel */
+
+.filter-card {
+  padding: 20px;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 15px 0;
+}
+
+.filter-note {
+  margin: 18px 0 0;
+  color: #7b8794;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* Responsive layout */
+
+@media (max-width: 850px) {
+  .dashboard-content {
+    width: 92%;
   }
-  to {
-    transform: rotate(360deg);
+
+  .visualization-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-card {
+    order: -1;
+  }
+
+  .search-row {
+    flex-direction: column;
+  }
+
+  .dropdown {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }
