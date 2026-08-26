@@ -1,0 +1,329 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>CS179G Backend Testing Guide</title>
+<meta name="Subject" content="Testing the MySQL, Express, and React integration"/>
+<meta name="Keywords" content=""/>
+<meta name="Author" content="CS179G Group 3"/>
+<meta name="Creator" content="(unspecified)"/>
+<meta name="Producer" content="ReportLab PDF Library - (opensource)"/>
+<meta name="CreationDate" content="2026-08-21T16:20:03-07"/>
+<meta name="ModDate" content="2026-08-21T16:20:03-07"/>
+</head>
+<body>
+<doc>
+  <page width="612.000000" height="792.000000">
+    <flow>
+      <block xMin="51.840000" yMin="24.496000" xMax="146.976000" yMax="31.896000">
+        <line xMin="51.840000" yMin="24.496000" xMax="146.976000" yMax="31.896000">
+          <word xMin="51.840000" yMin="24.496000" xMax="82.520000" yMax="31.896000">CS179G</word>
+          <word xMin="84.744000" yMin="24.496000" xMax="114.080000" yMax="31.896000">N-Gram</word>
+          <word xMin="116.304000" yMin="24.496000" xMax="146.976000" yMax="31.896000">Website</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="477.008000" yMin="24.496000" xMax="560.160000" yMax="31.896000">
+        <line xMin="477.008000" yMin="24.496000" xMax="560.160000" yMax="31.896000">
+          <word xMin="477.008000" yMin="24.496000" xMax="508.136000" yMax="31.896000">Backend</word>
+          <word xMin="510.360000" yMin="24.496000" xMax="536.592000" yMax="31.896000">Testing</word>
+          <word xMin="538.816000" yMin="24.496000" xMax="560.160000" yMax="31.896000">Guide</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="60.000000" yMin="62.352000" xMax="210.224000" yMax="77.152000">
+        <line xMin="60.000000" yMin="62.352000" xMax="210.224000" yMax="77.152000">
+          <word xMin="60.000000" yMin="62.352000" xMax="73.344000" yMax="77.152000">4.</word>
+          <word xMin="77.792000" yMin="62.352000" xMax="147.120000" yMax="77.152000">Frontend</word>
+          <word xMin="151.568000" yMin="62.352000" xMax="210.224000" yMax="77.152000">handoff</word>
+        </line>
+      </block>
+      <block xMin="60.000000" yMin="88.603600" xMax="518.620400" yMax="97.668600">
+        <line xMin="60.000000" yMin="88.603600" xMax="518.620400" yMax="97.668600">
+          <word xMin="60.000000" yMin="88.603600" xMax="76.885400" yMax="97.668600">The</word>
+          <word xMin="79.609800" yMin="88.603600" xMax="115.566000" yMax="97.668600">frontend</word>
+          <word xMin="118.290400" yMin="88.603600" xMax="139.527000" yMax="97.668600">must</word>
+          <word xMin="142.251400" yMin="88.603600" xMax="156.951400" yMax="97.668600">call</word>
+          <word xMin="159.675800" yMin="88.603600" xMax="197.797800" yMax="97.668600">Express.</word>
+          <word xMin="200.522200" yMin="88.603600" xMax="205.971000" yMax="97.668600">It</word>
+          <word xMin="208.695400" yMin="88.603600" xMax="229.932000" yMax="97.668600">must</word>
+          <word xMin="232.656400" yMin="88.603600" xMax="257.166200" yMax="97.668600">never</word>
+          <word xMin="259.890600" yMin="88.603600" xMax="294.210200" yMax="97.668600">connect</word>
+          <word xMin="296.934600" yMin="88.603600" xMax="327.971200" yMax="97.668600">directly</word>
+          <word xMin="330.695600" yMin="88.603600" xMax="338.868800" yMax="97.668600">to</word>
+          <word xMin="341.593200" yMin="88.603600" xMax="374.266400" yMax="97.668600">MySQL</word>
+          <word xMin="376.990800" yMin="88.603600" xMax="385.703000" yMax="97.668600">or</word>
+          <word xMin="388.427400" yMin="88.603600" xMax="420.022600" yMax="97.668600">contain</word>
+          <word xMin="422.747000" yMin="88.603600" xMax="428.195800" yMax="97.668600">a</word>
+          <word xMin="430.920200" yMin="88.603600" xMax="471.237400" yMax="97.668600">database</word>
+          <word xMin="473.961800" yMin="88.603600" xMax="518.620400" yMax="97.668600">password.</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="60.000000" yMin="113.283000" xMax="180.761500" yMax="123.920500">
+        <line xMin="60.000000" yMin="113.283000" xMax="180.761500" yMax="123.920500">
+          <word xMin="60.000000" yMin="113.283000" xMax="82.356000" yMax="123.920500">Run</word>
+          <word xMin="85.553000" yMin="113.283000" xMax="110.462000" yMax="123.920500">both</word>
+          <word xMin="113.659000" yMin="113.283000" xMax="180.761500" yMax="123.920500">applications</word>
+        </line>
+      </block>
+      <block xMin="134.760000" yMin="139.860000" xMax="234.240000" yMax="149.110000">
+        <line xMin="134.760000" yMin="139.860000" xMax="234.240000" yMax="149.110000">
+          <word xMin="134.760000" yMin="139.860000" xMax="176.440000" yMax="149.110000">Terminal</word>
+          <word xMin="179.220000" yMin="139.860000" xMax="184.780000" yMax="149.110000">1</word>
+          <word xMin="187.560000" yMin="139.860000" xMax="190.890000" yMax="149.110000">-</word>
+          <word xMin="193.670000" yMin="139.860000" xMax="234.240000" yMax="149.110000">backend</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="377.770000" yMin="139.860000" xMax="477.230000" yMax="149.110000">
+        <line xMin="377.770000" yMin="139.860000" xMax="477.230000" yMax="149.110000">
+          <word xMin="377.770000" yMin="139.860000" xMax="419.450000" yMax="149.110000">Terminal</word>
+          <word xMin="422.230000" yMin="139.860000" xMax="427.790000" yMax="149.110000">2</word>
+          <word xMin="430.570000" yMin="139.860000" xMax="433.900000" yMax="149.110000">-</word>
+          <word xMin="436.680000" yMin="139.860000" xMax="477.230000" yMax="149.110000">frontend</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="69.000000" yMin="166.082200" xMax="118.200000" yMax="183.727400">
+        <line xMin="69.000000" yMin="166.082200" xMax="118.200000" yMax="172.527400">
+          <word xMin="69.000000" yMin="166.082200" xMax="78.840000" yMax="172.527400">cd</word>
+          <word xMin="83.760000" yMin="166.082200" xMax="118.200000" yMax="172.527400">backend</word>
+        </line>
+        <line xMin="69.000000" yMin="177.282200" xMax="113.280000" yMax="183.727400">
+          <word xMin="69.000000" yMin="177.282200" xMax="83.760000" yMax="183.727400">npm</word>
+          <word xMin="88.680000" yMin="177.282200" xMax="113.280000" yMax="183.727400">start</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="312.000000" yMin="166.082200" xMax="366.120000" yMax="183.727400">
+        <line xMin="312.000000" yMin="166.082200" xMax="366.120000" yMax="172.527400">
+          <word xMin="312.000000" yMin="166.082200" xMax="321.840000" yMax="172.527400">cd</word>
+          <word xMin="326.760000" yMin="166.082200" xMax="366.120000" yMax="172.527400">frontend</word>
+        </line>
+        <line xMin="312.000000" yMin="177.282200" xMax="356.280000" yMax="183.727400">
+          <word xMin="312.000000" yMin="177.282200" xMax="326.760000" yMax="183.727400">npm</word>
+          <word xMin="331.680000" yMin="177.282200" xMax="356.280000" yMax="183.727400">start</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="69.000000" yMin="201.837000" xMax="145.075000" yMax="209.699500">
+        <line xMin="69.000000" yMin="201.837000" xMax="145.075000" yMax="209.699500">
+          <word xMin="69.000000" yMin="201.837000" xMax="145.075000" yMax="209.699500">http://localhost:5000</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="312.000000" yMin="201.837000" xMax="388.075000" yMax="209.699500">
+        <line xMin="312.000000" yMin="201.837000" xMax="388.075000" yMax="209.699500">
+          <word xMin="312.000000" yMin="201.837000" xMax="388.075000" yMax="209.699500">http://localhost:3000</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="60.000000" yMin="231.683000" xMax="185.902000" yMax="242.320500">
+        <line xMin="60.000000" yMin="231.683000" xMax="185.902000" yMax="242.320500">
+          <word xMin="60.000000" yMin="231.683000" xMax="91.314500" yMax="242.320500">React</word>
+          <word xMin="94.511500" yMin="231.683000" xMax="141.167000" yMax="242.320500">keyword</word>
+          <word xMin="144.364000" yMin="231.683000" xMax="185.902000" yMax="242.320500">request</word>
+        </line>
+      </block>
+      <block xMin="73.000000" yMin="259.482200" xMax="363.280000" yMax="299.527400">
+        <line xMin="73.000000" yMin="259.482200" xMax="259.960000" yMax="265.927400">
+          <word xMin="73.000000" yMin="259.482200" xMax="97.600000" yMax="265.927400">async</word>
+          <word xMin="102.520000" yMin="259.482200" xMax="141.880000" yMax="265.927400">function</word>
+          <word xMin="146.800000" yMin="259.482200" xMax="250.120000" yMax="265.927400">getWordTrend(keyword)</word>
+          <word xMin="255.040000" yMin="259.482200" xMax="259.960000" yMax="265.927400">{</word>
+        </line>
+        <line xMin="82.840000" yMin="270.682200" xMax="363.280000" yMax="277.127400">
+          <word xMin="82.840000" yMin="270.682200" xMax="107.440000" yMax="277.127400">const</word>
+          <word xMin="112.360000" yMin="270.682200" xMax="127.120000" yMax="277.127400">url</word>
+          <word xMin="132.040000" yMin="270.682200" xMax="136.960000" yMax="277.127400">=</word>
+          <word xMin="141.880000" yMin="270.682200" xMax="353.440000" yMax="277.127400">&apos;http://localhost:5000/api/trends?keyword=&apos;</word>
+          <word xMin="358.360000" yMin="270.682200" xMax="363.280000" yMax="277.127400">+</word>
+        </line>
+        <line xMin="92.680000" yMin="281.882200" xMax="230.440000" yMax="288.327400">
+          <word xMin="92.680000" yMin="281.882200" xMax="230.440000" yMax="288.327400">encodeURIComponent(keyword);</word>
+        </line>
+        <line xMin="82.840000" yMin="293.082200" xMax="250.120000" yMax="299.527400">
+          <word xMin="82.840000" yMin="293.082200" xMax="107.440000" yMax="299.527400">const</word>
+          <word xMin="112.360000" yMin="293.082200" xMax="151.720000" yMax="299.527400">response</word>
+          <word xMin="156.640000" yMin="293.082200" xMax="161.560000" yMax="299.527400">=</word>
+          <word xMin="166.480000" yMin="293.082200" xMax="191.080000" yMax="299.527400">await</word>
+          <word xMin="196.000000" yMin="293.082200" xMax="250.120000" yMax="299.527400">fetch(url);</word>
+        </line>
+      </block>
+      <block xMin="82.840000" yMin="315.482200" xMax="333.760000" yMax="344.327400">
+        <line xMin="82.840000" yMin="315.482200" xMax="176.320000" yMax="321.927400">
+          <word xMin="82.840000" yMin="315.482200" xMax="92.680000" yMax="321.927400">if</word>
+          <word xMin="97.600000" yMin="315.482200" xMax="166.480000" yMax="321.927400">(!response.ok)</word>
+          <word xMin="171.400000" yMin="315.482200" xMax="176.320000" yMax="321.927400">{</word>
+        </line>
+        <line xMin="92.680000" yMin="326.682200" xMax="333.760000" yMax="333.127400">
+          <word xMin="92.680000" yMin="326.682200" xMax="117.280000" yMax="333.127400">throw</word>
+          <word xMin="122.200000" yMin="326.682200" xMax="136.960000" yMax="333.127400">new</word>
+          <word xMin="141.880000" yMin="326.682200" xMax="200.920000" yMax="333.127400">Error(&apos;Could</word>
+          <word xMin="205.840000" yMin="326.682200" xMax="220.600000" yMax="333.127400">not</word>
+          <word xMin="225.520000" yMin="326.682200" xMax="245.200000" yMax="333.127400">load</word>
+          <word xMin="250.120000" yMin="326.682200" xMax="264.880000" yMax="333.127400">the</word>
+          <word xMin="269.800000" yMin="326.682200" xMax="289.480000" yMax="333.127400">word</word>
+          <word xMin="294.400000" yMin="326.682200" xMax="333.760000" yMax="333.127400">trend&apos;);</word>
+        </line>
+        <line xMin="82.840000" yMin="337.882200" xMax="87.760000" yMax="344.327400">
+          <word xMin="82.840000" yMin="337.882200" xMax="87.760000" yMax="344.327400">}</word>
+        </line>
+      </block>
+      <block xMin="82.840000" yMin="360.282200" xMax="264.880000" yMax="377.927400">
+        <line xMin="82.840000" yMin="360.282200" xMax="264.880000" yMax="366.727400">
+          <word xMin="82.840000" yMin="360.282200" xMax="107.440000" yMax="366.727400">const</word>
+          <word xMin="112.360000" yMin="360.282200" xMax="141.880000" yMax="366.727400">result</word>
+          <word xMin="146.800000" yMin="360.282200" xMax="151.720000" yMax="366.727400">=</word>
+          <word xMin="156.640000" yMin="360.282200" xMax="181.240000" yMax="366.727400">await</word>
+          <word xMin="186.160000" yMin="360.282200" xMax="264.880000" yMax="366.727400">response.json();</word>
+        </line>
+        <line xMin="82.840000" yMin="371.482200" xMax="176.320000" yMax="377.927400">
+          <word xMin="82.840000" yMin="371.482200" xMax="112.360000" yMax="377.927400">return</word>
+          <word xMin="117.280000" yMin="371.482200" xMax="176.320000" yMax="377.927400">result.data;</word>
+        </line>
+      </block>
+      <block xMin="73.000000" yMin="382.682200" xMax="77.920000" yMax="389.127400">
+        <line xMin="73.000000" yMin="382.682200" xMax="77.920000" yMax="389.127400">
+          <word xMin="73.000000" yMin="382.682200" xMax="77.920000" yMax="389.127400">}</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="60.000000" yMin="412.083000" xMax="166.708500" yMax="422.720500">
+        <line xMin="60.000000" yMin="412.083000" xMax="166.708500" yMax="422.720500">
+          <word xMin="60.000000" yMin="412.083000" xMax="115.591000" yMax="422.720500">Line-chart</word>
+          <word xMin="118.788000" yMin="412.083000" xMax="166.708500" yMax="422.720500">mapping</word>
+        </line>
+      </block>
+      <block xMin="73.000000" yMin="439.882200" xMax="319.000000" yMax="457.527400">
+        <line xMin="73.000000" yMin="439.882200" xMax="284.560000" yMax="446.327400">
+          <word xMin="73.000000" yMin="439.882200" xMax="97.600000" yMax="446.327400">const</word>
+          <word xMin="102.520000" yMin="439.882200" xMax="132.040000" yMax="446.327400">labels</word>
+          <word xMin="136.960000" yMin="439.882200" xMax="141.880000" yMax="446.327400">=</word>
+          <word xMin="146.800000" yMin="439.882200" xMax="210.760000" yMax="446.327400">data.map(item</word>
+          <word xMin="215.680000" yMin="439.882200" xMax="225.520000" yMax="446.327400">=&gt;</word>
+          <word xMin="230.440000" yMin="439.882200" xMax="284.560000" yMax="446.327400">item.year);</word>
+        </line>
+        <line xMin="73.000000" yMin="451.082200" xMax="319.000000" yMax="457.527400">
+          <word xMin="73.000000" yMin="451.082200" xMax="97.600000" yMax="457.527400">const</word>
+          <word xMin="102.520000" yMin="451.082200" xMax="132.040000" yMax="457.527400">values</word>
+          <word xMin="136.960000" yMin="451.082200" xMax="141.880000" yMax="457.527400">=</word>
+          <word xMin="146.800000" yMin="451.082200" xMax="210.760000" yMax="457.527400">data.map(item</word>
+          <word xMin="215.680000" yMin="451.082200" xMax="225.520000" yMax="457.527400">=&gt;</word>
+          <word xMin="230.440000" yMin="451.082200" xMax="319.000000" yMax="457.527400">item.match_count);</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="60.000000" yMin="480.483000" xMax="185.246500" yMax="491.120500">
+        <line xMin="60.000000" yMin="480.483000" xMax="185.246500" yMax="491.120500">
+          <word xMin="60.000000" yMin="480.483000" xMax="140.511500" yMax="491.120500">Popular-words</word>
+          <word xMin="143.708500" yMin="480.483000" xMax="185.246500" yMax="491.120500">request</word>
+        </line>
+      </block>
+      <block xMin="73.000000" yMin="508.282200" xMax="407.560000" yMax="593.127400">
+        <line xMin="73.000000" yMin="508.282200" xMax="250.120000" yMax="514.727400">
+          <word xMin="73.000000" yMin="508.282200" xMax="97.600000" yMax="514.727400">async</word>
+          <word xMin="102.520000" yMin="508.282200" xMax="141.880000" yMax="514.727400">function</word>
+          <word xMin="146.800000" yMin="508.282200" xMax="240.280000" yMax="514.727400">getTopWords(decade)</word>
+          <word xMin="245.200000" yMin="508.282200" xMax="250.120000" yMax="514.727400">{</word>
+        </line>
+        <line xMin="82.840000" yMin="519.482200" xMax="225.520000" yMax="525.927400">
+          <word xMin="82.840000" yMin="519.482200" xMax="107.440000" yMax="525.927400">const</word>
+          <word xMin="112.360000" yMin="519.482200" xMax="151.720000" yMax="525.927400">response</word>
+          <word xMin="156.640000" yMin="519.482200" xMax="161.560000" yMax="525.927400">=</word>
+          <word xMin="166.480000" yMin="519.482200" xMax="191.080000" yMax="525.927400">await</word>
+          <word xMin="196.000000" yMin="519.482200" xMax="225.520000" yMax="525.927400">fetch(</word>
+        </line>
+        <line xMin="92.680000" yMin="530.682200" xMax="402.640000" yMax="537.127400">
+          <word xMin="92.680000" yMin="530.682200" xMax="402.640000" yMax="537.127400">`http://localhost:5000/api/top-words?decade=${decade}&amp;limit=10`</word>
+        </line>
+        <line xMin="82.840000" yMin="541.882200" xMax="92.680000" yMax="548.327400">
+          <word xMin="82.840000" yMin="541.882200" xMax="92.680000" yMax="548.327400">);</word>
+        </line>
+        <line xMin="82.840000" yMin="553.082200" xMax="407.560000" yMax="559.527400">
+          <word xMin="82.840000" yMin="553.082200" xMax="92.680000" yMax="559.527400">if</word>
+          <word xMin="97.600000" yMin="553.082200" xMax="166.480000" yMax="559.527400">(!response.ok)</word>
+          <word xMin="171.400000" yMin="553.082200" xMax="196.000000" yMax="559.527400">throw</word>
+          <word xMin="200.920000" yMin="553.082200" xMax="215.680000" yMax="559.527400">new</word>
+          <word xMin="220.600000" yMin="553.082200" xMax="279.640000" yMax="559.527400">Error(&apos;Could</word>
+          <word xMin="284.560000" yMin="553.082200" xMax="299.320000" yMax="559.527400">not</word>
+          <word xMin="304.240000" yMin="553.082200" xMax="323.920000" yMax="559.527400">load</word>
+          <word xMin="328.840000" yMin="553.082200" xMax="363.280000" yMax="559.527400">popular</word>
+          <word xMin="368.200000" yMin="553.082200" xMax="407.560000" yMax="559.527400">words&apos;);</word>
+        </line>
+        <line xMin="82.840000" yMin="564.282200" xMax="264.880000" yMax="570.727400">
+          <word xMin="82.840000" yMin="564.282200" xMax="107.440000" yMax="570.727400">const</word>
+          <word xMin="112.360000" yMin="564.282200" xMax="141.880000" yMax="570.727400">result</word>
+          <word xMin="146.800000" yMin="564.282200" xMax="151.720000" yMax="570.727400">=</word>
+          <word xMin="156.640000" yMin="564.282200" xMax="181.240000" yMax="570.727400">await</word>
+          <word xMin="186.160000" yMin="564.282200" xMax="264.880000" yMax="570.727400">response.json();</word>
+        </line>
+        <line xMin="82.840000" yMin="575.482200" xMax="176.320000" yMax="581.927400">
+          <word xMin="82.840000" yMin="575.482200" xMax="112.360000" yMax="581.927400">return</word>
+          <word xMin="117.280000" yMin="575.482200" xMax="176.320000" yMax="581.927400">result.data;</word>
+        </line>
+        <line xMin="73.000000" yMin="586.682200" xMax="77.920000" yMax="593.127400">
+          <word xMin="73.000000" yMin="586.682200" xMax="77.920000" yMax="593.127400">}</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="60.000000" yMin="616.083000" xMax="162.235000" yMax="626.720500">
+        <line xMin="60.000000" yMin="616.083000" xMax="162.235000" yMax="626.720500">
+          <word xMin="60.000000" yMin="616.083000" xMax="111.117500" yMax="626.720500">Bar-chart</word>
+          <word xMin="114.314500" yMin="616.083000" xMax="162.235000" yMax="626.720500">mapping</word>
+        </line>
+      </block>
+      <block xMin="73.000000" yMin="643.882200" xMax="328.840000" yMax="661.527400">
+        <line xMin="73.000000" yMin="643.882200" xMax="284.560000" yMax="650.327400">
+          <word xMin="73.000000" yMin="643.882200" xMax="97.600000" yMax="650.327400">const</word>
+          <word xMin="102.520000" yMin="643.882200" xMax="132.040000" yMax="650.327400">labels</word>
+          <word xMin="136.960000" yMin="643.882200" xMax="141.880000" yMax="650.327400">=</word>
+          <word xMin="146.800000" yMin="643.882200" xMax="210.760000" yMax="650.327400">data.map(item</word>
+          <word xMin="215.680000" yMin="643.882200" xMax="225.520000" yMax="650.327400">=&gt;</word>
+          <word xMin="230.440000" yMin="643.882200" xMax="284.560000" yMax="650.327400">item.word);</word>
+        </line>
+        <line xMin="73.000000" yMin="655.082200" xMax="328.840000" yMax="661.527400">
+          <word xMin="73.000000" yMin="655.082200" xMax="97.600000" yMax="661.527400">const</word>
+          <word xMin="102.520000" yMin="655.082200" xMax="132.040000" yMax="661.527400">values</word>
+          <word xMin="136.960000" yMin="655.082200" xMax="141.880000" yMax="661.527400">=</word>
+          <word xMin="146.800000" yMin="655.082200" xMax="210.760000" yMax="661.527400">data.map(item</word>
+          <word xMin="215.680000" yMin="655.082200" xMax="225.520000" yMax="661.527400">=&gt;</word>
+          <word xMin="230.440000" yMin="655.082200" xMax="328.840000" yMax="661.527400">item.total_matches);</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="51.840000" yMin="761.776000" xMax="176.792000" yMax="769.176000">
+        <line xMin="51.840000" yMin="761.776000" xMax="176.792000" yMax="769.176000">
+          <word xMin="51.840000" yMin="761.776000" xMax="74.072000" yMax="769.176000">Group</word>
+          <word xMin="76.296000" yMin="761.776000" xMax="80.744000" yMax="769.176000">3</word>
+          <word xMin="82.968000" yMin="761.776000" xMax="85.632000" yMax="769.176000">-</word>
+          <word xMin="87.856000" yMin="761.776000" xMax="106.976000" yMax="769.176000">Local</word>
+          <word xMin="109.200000" yMin="761.776000" xMax="155.000000" yMax="769.176000">development</word>
+          <word xMin="157.224000" yMin="761.776000" xMax="176.792000" yMax="769.176000">guide</word>
+        </line>
+      </block>
+    </flow>
+    <flow>
+      <block xMin="534.808000" yMin="761.776000" xMax="560.160000" yMax="769.176000">
+        <line xMin="534.808000" yMin="761.776000" xMax="560.160000" yMax="769.176000">
+          <word xMin="534.808000" yMin="761.776000" xMax="553.488000" yMax="769.176000">Page</word>
+          <word xMin="555.712000" yMin="761.776000" xMax="560.160000" yMax="769.176000">4</word>
+        </line>
+      </block>
+    </flow>
+  </page>
+</doc>
+</body>
+</html>
