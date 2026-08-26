@@ -1,24 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
 import { LineChart } from '@mui/x-charts/LineChart';
-
-// Fetch trend data for keyword "database"
-function fetchTrendData() {
-    return fetch('http://localhost:5000/api/trends?keyword=database')
-      .then((response) => {
-        return response.json().then((data) => {
-          console.log('Fetched trend data for "database":', data);
-          return data;
-        }).catch(error => console.error('Error fetching data:', error));
-      });
-}
+import { useEffect, useState } from 'react';
 
 function App() {
 
-  let trendData = null;
-  fetchTrendData().then((data) => {
-    trendData = data;
-  })
+  const [trendData, setTrendData] = useState([]);
+  // Fetch trend data for input keyword 
+  useEffect(() => {
+    async function fetchTrends(keyword) {
+      const response = await fetch(`http://localhost:5000/api/trends?keyword=${keyword}`);
+      const data = await response.json();
+      console.log(`Fetched trend data for "${keyword}":`, data.data);
+      setTrendData(data.data);
+    }
+    // User input keyword variable goes here 
+    fetchTrends('radio').catch((error) => {
+      console.error('Error fetching trend data:', error);
+    });
+  });
 
   return (
     <div className="App">
@@ -35,21 +35,16 @@ function App() {
         >
           Learn React
         </a>
-        <ul>
-          {trendData.map(item => (
-            <li>{item[0]}</li>
-          ))}
-        </ul>
-        <LineChart
-          xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
-          series={[
-            {
-              data: [2, 5.5, 2, 8.5, 1.5, 5],
-            },
-          ]}
-          width={500}
-          height={300}
-        />
+
+        <div style={{ width: '100%', height: '300px' }}>
+          <LineChart 
+            dataset={trendData}
+            xAxis={[{ dataKey: 'year' }]}
+            series={[{ dataKey: 'match_count', type: 'line' }]}
+          />
+        </div>
+            
+          
       </header>
     </div>
   );
