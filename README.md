@@ -77,3 +77,12 @@ fetch('http://localhost:5000/api/trends?keyword=database')
   .then(response => response.json())
   .then(result => console.log(result.data));
 ```
+
+## Part 3: Final Part
+
+### How to run Web Interface
+
+1. Open two (2) separate terminals: One in *backend* directory and the other in *frontend* directory.
+2. `npm install` in both terminals
+3. `npm start` in backend, then in frontend.
+4. Access `http://localhost:3000/`
