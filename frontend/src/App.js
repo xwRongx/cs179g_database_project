@@ -3,6 +3,7 @@ import './App.css';
 
 import TopYear from './TopYear';
 import TopDecade from './TopDecade';
+import WordTrend from './WordTrend';
 
 function App() {
   const [entered, setEntered] = useState(false);
@@ -52,11 +53,17 @@ function Dashboard() {
 
   const [searchWord, setSearchWord] = useState('');
 
+  const [submittedWord, setSubmittedWord] = useState('');
+
 
   function handleSearch(event) {
     event.preventDefault();
 
-    console.log('Search word:', searchWord);
+    if (!searchWord.trim()) return;
+
+    setSubmittedWord(searchWord.trim());
+
+    setGraphType('search');
   }
 
 
@@ -243,13 +250,20 @@ function Dashboard() {
 
                 <h2>
 
-                  {ranking === 'top'
-                    ? 'Top '
-                    : 'Bottom '}
+                  {graphType === 'search'
+                    ? `Word Trend: ${submittedWord}`
+                    : (
+                      <>
+                        {ranking === 'top'
+                          ? 'Top '
+                          : 'Bottom '}
 
-                  {graphType === 'decade'
-                    ? 'Words by Decade'
-                    : 'Words by Year'}
+                        {graphType === 'decade'
+                          ? 'Words by Decade'
+                          : 'Words by Year'}
+                      </>
+                    )
+                  }
 
                 </h2>
 
@@ -260,21 +274,27 @@ function Dashboard() {
 
             <div className="graph-component">
 
-              {graphType === 'decade'
+              {graphType === 'search'
                 ? (
-                    <TopDecade
-                      ranking={ranking}
-                      removeStopWords={removeStopWords}
-                      dictionaryOnly={dictionaryOnly}
+                    <WordTrend
+                      searchWord={submittedWord}
                     />
                   )
-                : (
-                    <TopYear
-                      ranking={ranking}
-                      removeStopWords={removeStopWords}
-                      dictionaryOnly={dictionaryOnly}
-                    />
-                  )
+                : graphType === 'decade'
+                  ? (
+                      <TopDecade
+                        ranking={ranking}
+                        removeStopWords={removeStopWords}
+                        dictionaryOnly={dictionaryOnly}
+                      />
+                    )
+                  : (
+                      <TopYear
+                        ranking={ranking}
+                        removeStopWords={removeStopWords}
+                        dictionaryOnly={dictionaryOnly}
+                      />
+                    )
               }
 
             </div>
